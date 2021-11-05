@@ -3,22 +3,19 @@ import axios from "axios";
 const baseURL = "http://localhost:8080/";
 
 function ListSongs(){
-    const [post, setPost] = React.useState(null);
+    const [get, setGet] = React.useState(null);
 
     React.useEffect(() => {
         axios.get(baseURL+"song").then((response) => {
-        setPost(response.data);
+            setGet(response.data);
         });
     }, []);
 
-    if (!post) return null;
-    
-    
-    
+    if (!get) return null;
     
     return(
         <ul>
-            { post.map(song => <li>{song.id}</li>)}
+            { get.map(song => <li>{song.id}</li>)}
         </ul>
     )
 }
