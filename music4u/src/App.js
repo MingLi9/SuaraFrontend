@@ -1,16 +1,29 @@
 import './App.css';
 import Navbar from './components/MainParts/Navbar';
-import AllSongs from './components/Song/AllSongs';
-import CreatSong from './components/Song/CreateSong';
+import Homepage from './components/MainParts/Homepage';
+import Song from './components/MainParts/Song';
+import Album from './components/MainParts/Album';
+import Playlist from './components/MainParts/Playlist';
+import User from './components/MainParts/User';
+import Login from './components/MainParts/Login';
+import Register from './components/MainParts/Register';
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Navbar/>
-      <AllSongs/>
-      <CreatSong/>
+      <Routes>
+        <Route path='/' caseSensitive={true} element={<Homepage />} />
+        <Route path='/song/*' caseSensitive={true} element={<Song />} />
+        <Route path='/album' caseSensitive={true} element={<Album />} />
+        <Route path='/playlist' caseSensitive={true} element={<Playlist />} />
+        <Route path='/user' caseSensitive={true} element={<User />} />
+        <Route path='/login' caseSensitive={true} element={<Login />} />
+        <Route path='/register' caseSensitive={true} element={<Register />} />
+      </Routes>
     </>
   );
-}
+} 
 
 export default App;

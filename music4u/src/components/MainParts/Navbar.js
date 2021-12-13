@@ -1,15 +1,18 @@
 import React from "react";
 
-function Navbar(){
+export default function Navbar(){
     return(
         <nav>
             <ul>
-                <li>Home</li>
-                <li>Contact</li>
-                <li>About</li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/song">Song</a></li>
+                <li><a href="/album">Album</a></li>
+                <li><a href="/playlist">Playlist</a></li>
+                <li><a href="/user">User</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/logout">logout</a></li>
             </ul>
         </nav>
     )
 }
-
-export default Navbar;
