@@ -9,8 +9,7 @@ export default function Navbar(){
                 <li><a href="/album">Album</a></li>
                 <li><a href="/playlist">Playlist</a></li>
                 <li><a href="/user">User</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
+                <li><a href="/login-register">Login</a></li>
                 <li><a href="/logout">logout</a></li>
             </ul>
         </nav>
