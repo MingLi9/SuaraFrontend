@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setAccessToken } from "../../actions";
+import { resetAccessToken, setAccessToken } from "../../actions";
 
+const qs = require('qs');
 const baseURL = "http://localhost:8080/";
 
 export default function Login(){
@@ -12,37 +13,47 @@ export default function Login(){
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
 
-    function login() {
-        dispatch(setAccessToken("DDG"));
-        // const headers = {
-        //     "Content-Type": "application/x-www-form-urlencoded",
-        //   };
-        // const loginobj = {"username": username,"password": password};
-        // axios.post(
-        //     baseURL+"login", 
-        //     loginobj,
-        //     headers)
-        // .then(function (response){
-        //     console.log(response);
-        //     dispatch(setAccessToken());
-        // })
-        // .catch(error => {
-        //     console.error('There was an error!', error);
-        // });
+    function sleep(milliseconds){
+        const date = Date.now();
+        let currentDate = null;
+        do {
+            currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+    }
+
+    async function login() {
+        const loginobj = {'username': username, 'password': password};
+        
+        await axios.post(baseURL+"login", qs.stringify(loginobj))
+        .then(function (response){
+            if(response != null){
+                dispatch(setAccessToken(response.data.access_token));
+            }
+        })
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
+    }
+
+    function logout(){
+        dispatch(resetAccessToken());
     }
 
     return(
         <>
             <form>
                 <label>
-                Username:{token}
+                Username:
                 <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
                 </label>
                 <label>
                 Password:
                 <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
-                <input type="submit" value="Submit" onClick={login}/>
+                <input type="button" value="Login" onClick={login} />
+            </form>
+            <form onSubmit={logout}>
+                <input type="submit" value="Logout" />
             </form>
         </>
     )

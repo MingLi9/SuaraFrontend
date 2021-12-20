@@ -5,7 +5,7 @@ const authReducer = (state, action) => {
         case 'RESETACCESSTOKEN':
             return "";
         default:
-            return "ABC";
+            return "";
     }
 }
 
