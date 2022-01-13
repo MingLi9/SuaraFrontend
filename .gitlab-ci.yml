@@ -10,7 +10,7 @@ build:
   image: node:16.13.0
   script:
     - npm install
-    - npm run build
+    - npm CI="false" run build
   allow_failure: true
 
 test:
