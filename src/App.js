@@ -18,7 +18,7 @@ function App() {
         <Route path='/album' caseSensitive={true} element={<Album />} />
         <Route path='/playlist' caseSensitive={true} element={<Playlist />} />
         <Route path='/user' caseSensitive={true} element={<User />} />
-        <Route path='/login-register/*' caseSensitive={true} element={<Login_Register />} />
+        <Route path='/loginregister/*' caseSensitive={true} element={<Login_Register />} />
       </Routes>
     </>
   );

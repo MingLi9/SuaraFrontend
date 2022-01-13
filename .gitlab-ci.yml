@@ -11,6 +11,7 @@ build:
   script:
     - npm install
     - npm run build
+  allow_failure: true
 
 test:
   stage: test
@@ -29,3 +30,4 @@ docker-build:
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
+  allow_failure: true

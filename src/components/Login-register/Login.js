@@ -7,19 +7,10 @@ const qs = require('qs');
 const baseURL = "http://localhost:8080/";
 
 export default function Login(){
-    const token = useSelector((state) => state.authReducer);
     const dispatch = useDispatch();
 
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
-
-    function sleep(milliseconds){
-        const date = Date.now();
-        let currentDate = null;
-        do {
-            currentDate = Date.now();
-        } while (currentDate - date < milliseconds);
-    }
 
     async function login() {
         const loginobj = {'username': username, 'password': password};
