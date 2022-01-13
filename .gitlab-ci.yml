@@ -8,7 +8,7 @@ build:
   image: node
   script:
     - npm install
-    - npm build
+    - npm run build
 
 test:
   stage: test
