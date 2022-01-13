@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . /app/
 
 RUN npm install
-RUN npm install react-scripts@5.0.0 -g
+RUN npm install react-scripts@3.0.1 -g
 RUN npm run build
 
 FROM nginx:1.21.5-alpine
