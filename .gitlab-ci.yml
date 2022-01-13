@@ -1,8 +1,5 @@
 image: node:16.13.0
 
-services:
-  - docker:dind
-
 stages:
   - build
   - test
@@ -27,7 +24,12 @@ docker-build:
   stage: docker-build
   image: docker
   services:
-    - name: docker:19.03.8-dind
+    - name: docker:dind
+      alias: dockerdaemon
+  variables:
+    DOCKER_HOST: tcp://dockerdaemon:3000/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
