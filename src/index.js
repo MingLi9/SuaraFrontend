@@ -10,12 +10,12 @@ import allReducers from './reducers';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const persistConfig = {
-    key: 'root',
-    storage,
-};
+  key: 'root',
+  storage: AsyncStorage,
+}
 
 const persistedReducer = persistReducer(persistConfig, allReducers);
 

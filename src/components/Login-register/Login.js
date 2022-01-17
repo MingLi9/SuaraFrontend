@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
-import { resetAccessToken, setAccessToken } from "../../actions";
+import { useDispatch } from "react-redux";
+import { setAccessToken, setRole } from "../../actions";
 
 const qs = require('qs');
 const baseURL = "http://localhost:8080/";
@@ -19,15 +19,13 @@ export default function Login(){
         .then(function (response){
             if(response != null){
                 dispatch(setAccessToken(response.data.access_token));
+                //When this is uncomment, the token is wiped.
+                //dispatch(setRole(response.data.role));
             }
         })
         .catch(error => {
             console.error('There was an error!', error);
         });
-    }
-
-    function logout(){
-        dispatch(resetAccessToken());
     }
 
     return(
@@ -42,9 +40,6 @@ export default function Login(){
                 <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </label>
                 <input type="button" value="Login" onClick={login} />
-            </form>
-            <form onSubmit={logout}>
-                <input type="submit" value="Logout" />
             </form>
         </>
     )

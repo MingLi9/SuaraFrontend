@@ -10,3 +10,16 @@ export const resetAccessToken = () => {
         type: 'RESETACCESSTOKEN'
     }
 }
+
+export const setRole = (role) => {
+    return {
+        type: role,
+        payload: role
+    }
+}
+
+export const resetRole = () => {
+    return{
+        type: 'resetRole'
+    }
+}
