@@ -15,9 +15,6 @@ export default function CreateSong(){
     async function songPost() {
         const song = {"file": songfile,"title": songtitle};
         await axios.post(baseURL+"song", song, header)
-        .then(
-            prompt("test")
-        )
         .catch(error => {
             this.setState({ errorMessage: error.message });
             console.error('There was an error!', error);
