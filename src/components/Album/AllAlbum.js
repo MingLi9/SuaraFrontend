@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const baseURL = "http://localhost:8080/";
 
 
-export default function ListPlaylist(){
+export default function Listalbum(){
     const [get, setGet] = React.useState(null);
     
     const token = useSelector((state) => state.authReducer);
@@ -14,10 +14,10 @@ export default function ListPlaylist(){
         'Authorization': token
     }}
 
-    function deleteplaylist(id){
-        axios.delete(baseURL+"playlist/"+id, header)
+    function deletealbum(id){
+        axios.delete(baseURL+"album/"+id, header)
             .then(res => {
-                axios.get(baseURL+"playlist", header).then((response) => {
+                axios.get(baseURL+"album", header).then((response) => {
                     setGet(response.data);
                 });
             })
@@ -27,7 +27,7 @@ export default function ListPlaylist(){
     }
 
     React.useEffect(() => {
-        axios.get(baseURL+"playlist", header).then((response) => {
+        axios.get(baseURL+"album", header).then((response) => {
             setGet(response.data);
         })
         .catch(error => {
@@ -45,16 +45,14 @@ export default function ListPlaylist(){
                     <th scope="col">ownerName</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
-                    <th scope="col"></th>
                 </thead>
                 <tbody>
-                    { get.map(playlist => 
+                    { get.map(album => 
                     <tr>
-                        <td>{playlist.name}</td>
-                        <td>{playlist.ownerName}</td>
-                        <td><Link to={"/playlist/update/"+playlist.id}>Update</Link></td>
-                        <td><Link to={"/playlist/"+playlist.id}>View</Link></td>
-                        <td><button onClick={(e)=> deleteplaylist(playlist.id)}>Delete</button></td>
+                        <td>{album.name}</td>
+                        <td>{album.ownerName}</td>
+                        <td><Link to={"/album/"+album.id}>View</Link></td>
+                        <td><button onClick={(e)=> deletealbum(album.id)}>Delete</button></td>
                     </tr>   
                     )}
                 </tbody>
