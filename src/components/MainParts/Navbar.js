@@ -46,7 +46,7 @@ export default function Navbar(){
                         <a class="nav-link" href="/playlist">Playlist</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/User">User</a>
+                        <a class="nav-link" href="/user">User</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" onClick={logout} href="/">logout</a>
