@@ -13,8 +13,8 @@ export default function Updateplaylist(){
 
     React.useEffect(() => {
         let pathname = window.location.pathname;
-        let id = pathname.replace("/playlist/", "");
-        axios.get(baseURL+"playlist/"+id, header).then((response) => {
+        let id = pathname.replace("/album/", "");
+        axios.get(baseURL+"album/"+id, header).then((response) => {
             setGet(response.data);
         })
     },[]);
