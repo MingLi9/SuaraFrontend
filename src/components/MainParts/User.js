@@ -19,10 +19,7 @@ export default function User(){
     };
 
     function updateUser(){
-        axios.put(baseURL+"user/role?id="+id+"&roleName="+roleName, header)
-        .then(
-            alert(baseURL+"user/role?id="+id+"&roleName="+roleName, header)
-        );
+        axios.put(baseURL+"user/role?id="+id+"&roleName="+roleName, header);
     }
 
     return(
