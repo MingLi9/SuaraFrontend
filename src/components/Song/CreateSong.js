@@ -12,9 +12,12 @@ export default function CreateSong(){
         'Authorization': token
     }}
 
-    function songPost() {
+    async function songPost() {
         const song = {"file": songfile,"title": songtitle};
-        axios.post(baseURL+"song", song, header)
+        await axios.post(baseURL+"song", song, header)
+        .then(
+            prompt("test")
+        )
         .catch(error => {
             this.setState({ errorMessage: error.message });
             console.error('There was an error!', error);
@@ -24,7 +27,7 @@ export default function CreateSong(){
     return(
         <form onSubmit={songPost}>
             <label>
-            Title (Must start with a capital lette):
+            Title (Must start with a capital letter):
             <input type="text" value={songtitle} onChange={(e) => setTitle(e.target.value)} />
             </label>
             <label>
